@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/actionModeSplitBackground"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4169e1"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_background"
+                android:id="@+id/studImage"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose your gender"
+                    android:textColor="#f8f8ff"/>
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:textColor="#f8f8ff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        />
+
+                    <RadioButton
+                        android:textColor="#f8f8ff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/dtDOB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date of Birth"
+                    android:textColor="#f8f8ff" />
+
+                <EditText
+                    android:id="@+id/dateDOB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="DOB"
+                    android:inputType="date"
+                    android:singleLine="true"
+                    android:textColor="#f8f8ff"
+                    android:textColorHint="#f8f8ff" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <EditText
+            android:textColorHint="#f8f8ff"
+            android:textColor="#f8f8ff"
+            android:id="@+id/fname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter First Name*" />
+
+        <EditText
+            android:textColor="#f8f8ff"
+            android:id="@+id/mname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Middle Name"
+            android:textColorHint="#f8f8ff"/>
+
+        <EditText
+            android:textColor="#f8f8ff"
+            android:textColorHint="#f8f8ff"
+            android:id="@+id/lname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Last Name*" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Spinner
+                android:id="@+id/studSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></Spinner>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lstView"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+        </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regular"
+            android:textColor="#f8f8ff"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correspondence"
+                android:textColor="#f8f8ff"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vocational"
+                android:textColor="#f8f8ff"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnSaveStudDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="?android:attr/colorPrimaryDark"
+            android:text="Save Student details"
+            android:textColor="?attr/colorBackgroundFloating"
+            android:textStyle="normal|bold|italic"
+            android:onClick="saveStudent"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
