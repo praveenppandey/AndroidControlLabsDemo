@@ -18,12 +18,15 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST = 1888;
+    public static final String EXTRA_MESSAGE = "Welcome";
+
     private Calendar mcalendar = Calendar.getInstance();
     private EditText mdob_et;
     private int day,month,year;
@@ -37,19 +40,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("SAVE STUDENT DETAILS");
 
 
-
-
-
         ActionBar bar = getSupportActionBar();
-
         bar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-
 
         ArrayAdapter lstAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, mobileArray);
         ArrayAdapter spinAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, subjects);
@@ -119,12 +116,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveStudent(View view)
     {
-        AlertDialog.Builder alertMsg= new AlertDialog.Builder(this);
-        alertMsg.create();
-        alertMsg.setMessage("Alert Dialog Example");
-        alertMsg.setTitle("Alert Dialog");
-        alertMsg.show();
+        EditText firstName = (EditText)findViewById(R.id.fname);
+        EditText middleName = (EditText) findViewById(R.id.mname);
+        EditText lastName = (EditText) findViewById(R.id.lname);
+
+       if (firstName.getText().toString().isEmpty() || middleName.getText().toString().isEmpty() || lastName.getText().toString().isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "please enter name details", Toast.LENGTH_LONG).show();
+        }
+        else {
+            AlertDialog.Builder alertMsg = new AlertDialog.Builder(this);
+            alertMsg.create();
+            alertMsg.setMessage("Alert Dialog Example");
+            alertMsg.setTitle("Alert Dialog");
+            alertMsg.show();
+
+            Intent intent = new Intent(this, StudentDetailsView.class);
+
+            String strMsg = firstName.getText().toString() + " " + middleName.getText().toString() + " " + lastName.getText().toString();
+            intent.putExtra(EXTRA_MESSAGE, strMsg);
+
+            startActivity(intent);
+        }
     }
 
-    
+
 }
