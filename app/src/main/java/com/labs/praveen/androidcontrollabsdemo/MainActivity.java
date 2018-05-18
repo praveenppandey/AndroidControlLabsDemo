@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.Calendar;
 
@@ -28,25 +30,41 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "Welcome";
 
     private Calendar mcalendar = Calendar.getInstance();
-    private EditText mdob_et;
+    private EditText mdob_et, editFName, editMName, editLName;
     private int day,month,year;
     ImageView imgView;
+    Spinner spnView;
 
     String[] mobileArray = {"Android","IPhone","WindowsMobile"};
     String[] subjects = {"Engg", "Science", "Commerce"};
-
+    ActionBar actionBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_main);
+
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4682B4")));
+
         setTitle("SAVE STUDENT DETAILS");
 
+        editFName = (EditText)findViewById(R.id.fname);
+        editMName = (EditText)findViewById(R.id.mname);
+        editLName = (EditText)findViewById(R.id.lname);
+        spnView = (Spinner) findViewById(R.id.studSpinner);
 
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+
+        editFName.setBackgroundResource(R.drawable.edittext_border);
+        editMName.setBackgroundResource(R.drawable.edittext_border);
+        editLName.setBackgroundResource(R.drawable.edittext_border);
+        spnView.setBackgroundResource(R.drawable.edittext_border);
+
 
         ArrayAdapter lstAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, mobileArray);
         ArrayAdapter spinAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, subjects);
@@ -63,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         sSpinner.setAdapter(spinAdapter);
 
         imgView = findViewById(R.id.studImage);
+        imgView.setBackgroundResource(R.drawable.edittext_border);
         imgView.setOnClickListener(imgClickLister);
 
     }
