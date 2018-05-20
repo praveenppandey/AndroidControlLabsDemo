@@ -11,6 +11,8 @@ import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.DatePicker;
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
         View.OnClickListener imgClickLister = new View.OnClickListener()
         {
 
@@ -144,11 +148,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "please enter name details", Toast.LENGTH_LONG).show();
         }
         else {
-            AlertDialog.Builder alertMsg = new AlertDialog.Builder(this);
-            alertMsg.create();
-            alertMsg.setMessage("Alert Dialog Example");
-            alertMsg.setTitle("Alert Dialog");
-            alertMsg.show();
+//            AlertDialog.Builder alertMsg = new AlertDialog.Builder(this);
+//            alertMsg.create();
+//            alertMsg.setMessage("Alert Dialog Example");
+//            alertMsg.setTitle("Alert Dialog");
+//            alertMsg.show();
 
             Intent intent = new Intent(this, StudentDetailsView.class);
 
