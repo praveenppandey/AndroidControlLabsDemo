@@ -7,9 +7,14 @@
     tools:context=".StudentDetailsView">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtView"/>
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vpager"></android.support.v4.view.ViewPager>
+
 
 
 </android.support.constraint.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.labs.praveen.androidcontrollabsdemo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 
 public class StudentDetailsView extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
