@@ -163,5 +163,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void javaUI(View view)
+    {
+        Intent javaUIIntent = new Intent(this, JavaUserInterface.class);
+        startActivity(javaUIIntent);
+    }
 
 }
