@@ -8,34 +8,43 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
-
 import java.util.Calendar;
+import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener{
 
     private static final int CAMERA_REQUEST = 1888;
     public static final String EXTRA_MESSAGE = "Welcome";
 
     private Calendar mcalendar = Calendar.getInstance();
     private EditText mdob_et, editFName, editMName, editLName;
+
+    private GestureDetector gestureDetector;
+
     private int day,month,year;
     ImageView imgView;
     Spinner spnView;
+    Button btnLongClick;
 
     String[] mobileArray = {"Android","IPhone","WindowsMobile"};
     String[] subjects = {"Engg", "Science", "Commerce"};
@@ -51,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
+
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4682B4")));
 
@@ -60,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         editMName = (EditText)findViewById(R.id.mname);
         editLName = (EditText)findViewById(R.id.lname);
         spnView = (Spinner) findViewById(R.id.studSpinner);
+        btnLongClick = (Button)findViewById(R.id.btnJavaUI);
+
+        this.gestureDetector = new GestureDetector(this, this);
+        gestureDetector.setOnDoubleTapListener(this);
 
 
         editFName.setBackgroundResource(R.drawable.edittext_border);
@@ -86,11 +101,83 @@ public class MainActivity extends AppCompatActivity {
         imgView.setBackgroundResource(R.drawable.edittext_border);
         imgView.setOnClickListener(imgClickLister);
 
+
+        btnLongClick.setOnLongClickListener(
+                new Button.OnLongClickListener()
+                {
+                    @Override
+                    public boolean onLongClick(View v) {
+
+                        Toast.makeText(getApplicationContext(), "LONG CLICK INVOKED", Toast.LENGTH_LONG).show();
+
+                        return true;
+                    }
+                }
+        );
+
+        //myMessage = (TextView)findViewById(R.id.);
+
+
     }
 
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gestureDetector.onTouchEvent(event);
 
-        View.OnClickListener imgClickLister = new View.OnClickListener()
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        editFName.setText("Single Tap Praveen");
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent e) {
+        editFName.setText("Double tap Praveen");
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent e) {
+        editFName.setText("DTE Praveen");
+        return false;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        editFName.setText("SCRPraveen");
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
+    }
+
+    View.OnClickListener imgClickLister = new View.OnClickListener()
         {
 
             @Override
@@ -107,10 +194,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
             DateDialog();
-
         }
     };
 
@@ -135,8 +219,6 @@ public class MainActivity extends AppCompatActivity {
             imgView.setImageBitmap(studPhoto);
         }
     }
-
-
     public void saveStudent(View view)
     {
         EditText firstName = (EditText)findViewById(R.id.fname);
@@ -162,11 +244,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
     public void javaUI(View view)
     {
-        Intent javaUIIntent = new Intent(this, JavaUserInterface.class);
-        startActivity(javaUIIntent);
+
+
+            Intent javaUIIntent = new Intent(this, JavaUserInterface.class);
+            startActivity(javaUIIntent);
+
     }
+
+
+
+
 
 }

@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".StudentDetailsView" />
-        <activity android:name=".JavaUserInterface"></activity>
+        <activity android:name=".JavaUserInterface" />
+        <activity android:name=".fragUserInterface"></activity>
     </application>
 
 </manifest>

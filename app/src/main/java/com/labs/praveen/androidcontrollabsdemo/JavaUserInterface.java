@@ -1,6 +1,7 @@
 package com.labs.praveen.androidcontrollabsdemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.Button;
 import android.graphics.Color;
 import android.widget.TextView;
+import android.content.res.Resources;
+import android.util.TypedValue;
 
 import org.w3c.dom.Text;
 
@@ -47,7 +50,12 @@ public class JavaUserInterface extends Activity {
         userNameProperties.addRule(RelativeLayout.ABOVE,javaUIBtnOne.getId());
         userNameProperties.addRule(RelativeLayout.CENTER_HORIZONTAL);
         userNameProperties.setMargins(0,0,0, 50);
-        userNameProperties.width = 300;
+
+        Resources r = getResources();
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, r.getDisplayMetrics());
+
+        userName.setWidth(px);
+
 
 
 
@@ -73,6 +81,14 @@ public class JavaUserInterface extends Activity {
                     txtView.setBackgroundColor(Color.BLUE);
                     sbar.show();
 
+                }
+                else {
+
+                    //fragUserInterface
+                    Intent fragmentIntent = new Intent(JavaUserInterface.this, fragUserInterface.class);
+                    fragmentIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(fragmentIntent);
+                    finish();
                 }
             }
         });
